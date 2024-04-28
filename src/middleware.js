@@ -11,24 +11,27 @@ export async function middleware(request, response) {
   try {
     let data;
     if (role === "111") {
-      data = await (
-        await fetch("http://127.0.0.1:8000/api/admin/current", {
+      data = await // await fetch("http://127.0.0.1:8000/api/admin/current", {
+      (
+        await fetch("https://backendabsensi.4muda.co/api/admin/current", {
           headers: {
             Authorization: token,
           },
         })
       ).json();
     } else if (role === "0001") {
-      data = await (
-        await fetch("http://127.0.0.1:8000/api/gurus/current", {
+      data = await // await fetch("http://127.0.0.1:8000/api/gurus/current", {
+      (
+        await fetch("https://backendabsensi.4muda.co/api/gurus/current", {
           headers: {
             Authorization: token,
           },
         })
       ).json();
     } else if (role === "1299") {
-      data = await (
-        await fetch("http://127.0.0.1:8000/api/siswa/current", {
+      data = await // await fetch("http://127.0.0.1:8000/api/siswa/current", {
+      (
+        await fetch("https://backendabsensi.4muda.co/api/siswa/current", {
           headers: {
             Authorization: token,
           },
