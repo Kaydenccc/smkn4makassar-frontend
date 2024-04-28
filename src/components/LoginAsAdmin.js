@@ -28,6 +28,7 @@ export function LoginAsAdmin() {
   async function login() {
     setLoading(true);
     setError(null);
+    console.log(process.env.NEXT_PUBLIC_API_SEVER);
     try {
       const data = await Axios.post("/admin/login", dataLogin);
       setCookie("role", "111", 1 / 4);
@@ -36,7 +37,8 @@ export function LoginAsAdmin() {
       navigate.push("/admin/daftar/guru");
     } catch (err) {
       if (err) {
-        setError(err.response.data.errors.message[0]);
+        console.log(err);
+        setError(err.response?.data?.errors.message[0]);
       }
       setLoading(false);
     }
