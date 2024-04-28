@@ -54,7 +54,7 @@ export default function PagePengaturan() {
     const token = getCookie("token");
     async function getGuru() {
       const res = await (
-        await fetch("http://127.0.0.1:8000/api/gurus/current", {
+        await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/gurus/current", {
           headers: {
             Authorization: token,
           },

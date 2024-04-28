@@ -8,7 +8,7 @@ async function getSiswa() {
   console.log(token);
 
   try {
-    const res = fetch("http://127.0.0.1:8000/api/admin/siswa/all", {
+    const res = fetch(process.env.NEXT_PUBLIC_API_SEVER + "/admin/siswa/all", {
       headers: {
         Authorization: token,
       },

@@ -114,7 +114,7 @@ const ListMapel = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.length > 0 &&
+            {TABLE_ROWS?.length > 0 &&
               TABLE_ROWS?.map(({ id, mapel }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast

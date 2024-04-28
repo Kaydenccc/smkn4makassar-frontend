@@ -5,7 +5,7 @@ import React from "react";
 async function getGuru() {
   const cookie = cookies();
   const token = cookie.get("token")?.value;
-  const res = await fetch("http://127.0.0.1:8000/api/gurus", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/gurus", {
     headers: {
       Authorization: token,
     },

@@ -114,7 +114,7 @@ const ListGuru = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.length > 0 &&
+            {TABLE_ROWS?.length > 0 &&
               TABLE_ROWS?.map(({ id, nama, nip, email, no_hp }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast

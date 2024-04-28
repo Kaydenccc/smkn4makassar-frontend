@@ -5,7 +5,7 @@ const getGuru = async (id) => {
   const cookie = cookies();
   const token = cookie.get("token")?.value;
   try {
-    const res = fetch("http://127.0.0.1:8000/api/gurus/" + id, {
+    const res = fetch(process.env.NEXT_PUBLIC_API_SEVER + "/gurus/" + id, {
       headers: {
         Authorization: token,
       },

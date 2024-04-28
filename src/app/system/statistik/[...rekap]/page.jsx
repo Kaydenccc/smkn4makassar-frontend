@@ -7,7 +7,7 @@ const getDataRekap = async (idmapel, idsiswa, idkelas) => {
   const token = cookie.get("token").value;
   try {
     const res = await fetch(
-      `http://127.0.0.1:8000/api/guru/absens/siswa/${idsiswa}/${idmapel}/${idkelas}/statistik`,
+      `${process.env.NEXT_PUBLIC_API_SEVER}/guru/absens/siswa/${idsiswa}/${idmapel}/${idkelas}/statistik`,
       {
         headers: {
           Authorization: token,

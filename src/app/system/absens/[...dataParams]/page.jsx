@@ -8,7 +8,7 @@ const getAbsenById = async (params) => {
   const token = cookie.get("token").value;
   try {
     const res = await fetch(
-      `http://127.0.0.1:8000/api/absens/${params[0]}/${params[1]}/${params[2]}/${params[3]}`,
+      `${process.env.NEXT_PUBLIC_API_SEVER}/absens/${params[0]}/${params[1]}/${params[2]}/${params[3]}`,
       {
         headers: {
           Authorization: token,

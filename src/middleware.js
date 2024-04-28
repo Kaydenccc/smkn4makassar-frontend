@@ -13,7 +13,7 @@ export async function middleware(request, response) {
     if (role === "111") {
       data = await // await fetch("http://127.0.0.1:8000/api/admin/current", {
       (
-        await fetch("https://backendabsensi.4muda.co/api/admin/current", {
+        await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/admin/current", {
           headers: {
             Authorization: token,
           },
@@ -22,7 +22,7 @@ export async function middleware(request, response) {
     } else if (role === "0001") {
       data = await // await fetch("http://127.0.0.1:8000/api/gurus/current", {
       (
-        await fetch("https://backendabsensi.4muda.co/api/gurus/current", {
+        await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/gurus/current", {
           headers: {
             Authorization: token,
           },
@@ -31,7 +31,7 @@ export async function middleware(request, response) {
     } else if (role === "1299") {
       data = await // await fetch("http://127.0.0.1:8000/api/siswa/current", {
       (
-        await fetch("https://backendabsensi.4muda.co/api/siswa/current", {
+        await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/siswa/current", {
           headers: {
             Authorization: token,
           },

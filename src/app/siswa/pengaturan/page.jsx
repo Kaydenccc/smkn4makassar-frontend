@@ -7,7 +7,7 @@ const getClass = async () => {
   const id = cookie.get("unique")?.value;
   try {
     const res = fetch(
-      "http://127.0.0.1:8000/api/kelas/siswa/" + id + "/bysiswa",
+      process.env.NEXT_PUBLIC_API_SEVER + "/kelas/siswa/" + id + "/bysiswa",
       {
         headers: {
           Authorization: token,

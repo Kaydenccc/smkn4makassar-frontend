@@ -5,7 +5,7 @@ import React from "react";
 async function getAdmin() {
   const cookie = cookies();
   const token = cookie.get("token")?.value;
-  const res = await fetch("http://127.0.0.1:8000/api/admin", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_SEVER + "/admin", {
     headers: {
       Authorization: token,
     },
