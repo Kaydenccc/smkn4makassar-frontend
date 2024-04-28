@@ -6,6 +6,7 @@ export function setCookie(cname, cvalue, exdays) {
       path: "/",
       secure: true,
       sameSite: "None",
+      domain: "absensismk4.4muda.co",
     });
     // const d = new Date();
 
@@ -18,18 +19,6 @@ export function setCookie(cname, cvalue, exdays) {
 
 export function getCookie(cname) {
   if (typeof window !== "undefined" && window.document) {
-    // let name = cname + "=";
-    // let decodedCookie = decodeURIComponent(document.cookie);
-    // let ca = decodedCookie.split(";");
-    // for (let i = 0; i < ca.length; i++) {
-    //   let c = ca[i];
-    //   while (c.charAt(0) == " ") {
-    //     c = c.substring(1);
-    //   }
-    //   if (c.indexOf(name) == 0) {
-    //     return c.substring(name.length, c.length);
-    //   }
-    // }
     return Cookies.get(cname);
   }
 }

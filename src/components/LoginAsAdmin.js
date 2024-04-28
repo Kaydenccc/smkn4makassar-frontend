@@ -32,6 +32,7 @@ export function LoginAsAdmin() {
       const data = await Axios.post("/admin/login", dataLogin);
       setCookie("role", "111", 1 / 4);
       setCookie("token", data?.data?.data.token, 1 / 4);
+      console.log(data);
       navigate.push("/admin/daftar/guru");
     } catch (err) {
       if (err) {
