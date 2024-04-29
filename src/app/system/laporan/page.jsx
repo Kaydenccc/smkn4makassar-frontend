@@ -21,7 +21,7 @@ const getAbsens = async () => {
     console.log(err);
   }
 };
-const page = async () => {
+const PageLaporan = async () => {
   const data = await getAbsens();
   console.log(data);
   return (
@@ -37,4 +37,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default PageLaporan;

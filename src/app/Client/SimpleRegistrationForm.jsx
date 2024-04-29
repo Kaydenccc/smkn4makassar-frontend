@@ -41,6 +41,7 @@ export function SimpleRegistrationForm({ kelas, mapel }) {
     }
   };
 
+  console.log(state);
   return (
     <Card shadow={false} className="p-0 md:p-4">
       <Typography variant="h4" color="blue-gray">

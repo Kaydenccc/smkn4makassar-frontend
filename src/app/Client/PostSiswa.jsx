@@ -312,9 +312,11 @@ export default function PostSiswa({ kelas }) {
                     />
                   </div>
                   <div className="flex justify-center items-center gap-4">
-                    <Button disabled={isLoading} size="lg" color="blue">
-                      <a href="/admin/daftar/siswa">Kembali</a>
-                    </Button>
+                    <a href="/admin/daftar/siswa">
+                      <Button disabled={isLoading} size="lg" color="blue">
+                        Kembali
+                      </Button>
+                    </a>
                     <Button disabled={isLoading} onClick={handlePost} size="lg">
                       {isLoading ? <DefaultSpinner /> : "Simpan"}
                     </Button>

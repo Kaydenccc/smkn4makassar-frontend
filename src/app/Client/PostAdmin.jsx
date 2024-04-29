@@ -128,14 +128,16 @@ export default function PostAdmin() {
             </div>
 
             <div className="flex justify-center items-center gap-4">
-              <Button
-                disabled={isLoading}
-                // onClick={() => route.back()}
-                size="lg"
-                color="blue"
-              >
-                <a href="/admin/daftar/admin">Kembali</a>
-              </Button>
+              <a href="/admin/daftar/admin">
+                <Button
+                  disabled={isLoading}
+                  // onClick={() => route.back()}
+                  size="lg"
+                  color="blue"
+                >
+                  Kembali
+                </Button>
+              </a>
               <Button disabled={isLoading} onClick={handlePost} size="lg">
                 {isLoading ? <DefaultSpinner /> : "Tambah Admin"}
               </Button>

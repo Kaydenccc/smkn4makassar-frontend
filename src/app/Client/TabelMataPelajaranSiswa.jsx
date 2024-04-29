@@ -27,8 +27,8 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
           Authorization: token,
         },
       });
-      setTABLE_ROWS(res.data.data);
-      setLINKS(res.data.links);
+      setTABLE_ROWS(res?.data.data);
+      setLINKS(res?.data.links);
     } catch (err) {
       console.log(err);
     }
@@ -96,7 +96,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.length > 0 ? (
+            {TABLE_ROWS?.length > 0 ? (
               TABLE_ROWS?.map(
                 ({ id_mapel, id_kelas, kelas, mapel, siswa, guru }, index) => {
                   const isLast = index === TABLE_ROWS.length - 1;
@@ -140,7 +140,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {guru.nama}
+                          {guru?.nama}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -149,7 +149,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {mapel.mapel}
+                          {mapel?.mapel}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -158,7 +158,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {kelas.kelas}
+                          {kelas?.kelas}
                         </Typography>
                       </td>
                     </tr>

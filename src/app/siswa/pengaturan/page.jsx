@@ -6,7 +6,7 @@ const getClass = async () => {
   const token = cookie.get("token")?.value;
   const id = cookie.get("unique")?.value;
   try {
-    const res = fetch(
+    const res = await fetch(
       process.env.NEXT_PUBLIC_API_SEVER + "/kelas/siswa/" + id + "/bysiswa",
       {
         headers: {
@@ -14,13 +14,14 @@ const getClass = async () => {
         },
       }
     );
-    return await (await res).json();
+    console.log(process.env.NEXT_PUBLIC_API_SEVER);
+    return await res.json();
   } catch (err) {
     console.log(err);
   }
 };
 
-async function page() {
+async function PagePengaturanSiswa() {
   const { data } = await getClass();
   console.log(data);
   return (
@@ -30,4 +31,4 @@ async function page() {
   );
 }
 
-export default page;
+export default PagePengaturanSiswa;

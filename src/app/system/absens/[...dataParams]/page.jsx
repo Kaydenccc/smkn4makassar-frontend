@@ -23,7 +23,7 @@ const getAbsenById = async (params) => {
   }
 };
 
-const page = async ({ params: { dataParams } }) => {
+const AbasenPageDetail = async ({ params: { dataParams } }) => {
   console.log(dataParams);
   const [id_mapel, id_guru, id_kelas, tanggal] = dataParams;
   const { data } = await getAbsenById(dataParams);
@@ -47,4 +47,4 @@ const page = async ({ params: { dataParams } }) => {
   );
 };
 
-export default page;
+export default AbasenPageDetail;

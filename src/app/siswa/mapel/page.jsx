@@ -15,14 +15,14 @@ const getAbsens = async () => {
         },
       }
     );
-    return response.json();
+    return await response.json();
   } catch (err) {
     console.log(err);
   }
 };
 const page = async () => {
   const data = await getAbsens();
-  console.log("DATAAAAA = ", data.data[0]);
+  console.log("DATAAAAA = ", data);
   return (
     <div className="w-full flex-1">
       <TabelMataPelajaranSiswa

@@ -1,4 +1,3 @@
-// import React, { Suspense } from "react";
 import { cookies } from "next/headers";
 import { TabelAbsenSiswa } from "../Client/TabelAbsenSiswa";
 
@@ -15,17 +14,17 @@ const getAbsens = async () => {
         },
       }
     );
-    return response.json();
+    console.log(process.env.NEXT_PUBLIC_API_SEVER);
+    return await response.json();
   } catch (err) {
     console.log(err);
   }
 };
-const page = async () => {
+const PageSiswa = async () => {
   const data = await getAbsens();
   console.log(data);
   return (
     <div className="w-full flex-1">
-      {/* <Suspense fallback={<>Loading...</>}> */}
       <TabelAbsenSiswa
         data={data?.data}
         siswa={data?.data[0]?.id_siswa}
@@ -33,9 +32,8 @@ const page = async () => {
         current_page={data?.meta?.current_page}
         last_page={data?.meta?.last_page}
       />
-      {/* </Suspense> */}
     </div>
   );
 };
 
-export default page;
+export default PageSiswa;

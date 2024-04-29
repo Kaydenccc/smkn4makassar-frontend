@@ -106,14 +106,16 @@ export default function PostKelas() {
             </div>
 
             <div className="flex justify-center items-center gap-4">
-              <Button
-                disabled={isLoading}
-                // onClick={() => route.back()}
-                size="lg"
-                color="blue"
-              >
-                <a href="/admin/daftar/kelas">Kembali</a>
-              </Button>
+              <a href="/admin/daftar/kelas">
+                <Button
+                  disabled={isLoading}
+                  // onClick={() => route.back()}
+                  size="lg"
+                  color="blue"
+                >
+                  Kembali
+                </Button>
+              </a>
               <Button disabled={isLoading} onClick={handlePost} size="lg">
                 {isLoading ? <DefaultSpinner /> : "Tambah"}
               </Button>
