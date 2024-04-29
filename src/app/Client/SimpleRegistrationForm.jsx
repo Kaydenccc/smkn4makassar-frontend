@@ -19,7 +19,7 @@ export function SimpleRegistrationForm({ kelas, mapel }) {
       payload: {
         ...state,
         id_guru: Number(getCookie("unique")),
-        [e.target.name]: e.target.value,
+        [e?.target?.name]: e?.target?.value,
       },
     });
   }

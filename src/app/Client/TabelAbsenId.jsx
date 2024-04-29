@@ -314,7 +314,7 @@ function TableWithStripedRows({
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {e.id_siswa.nis}
+                      {e?.id_siswa?.nis}
                     </Typography>
                   </td>
                   <td
@@ -334,7 +334,7 @@ function TableWithStripedRows({
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {e.id_siswa.nama}
+                      {e?.id_siswa?.nama}
                     </Typography>
                   </td>
                   <td className="p-4">
@@ -343,7 +343,7 @@ function TableWithStripedRows({
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {e.id_siswa.jenis_kelamin}
+                      {e.id_siswa?.jenis_kelamin}
                     </Typography>
                   </td>
                   <td className="p-4">
@@ -369,30 +369,30 @@ function TableWithStripedRows({
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {e.status ? e.status : "-"}
+                        {e?.status ? e?.status : "-"}
                       </Typography>
                     ) : (
                       openPerSiswa &&
-                      e.id !== idSiswa &&
-                      e.status && (
+                      e?.id !== idSiswa &&
+                      e?.status && (
                         <Typography
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {e.status}
+                          {e?.status}
                         </Typography>
                       )
                     )}
-                    {openPerSiswa && e.id === idSiswa && (
+                    {openPerSiswa && e?.id === idSiswa && (
                       <Select
                         disabled={loading}
                         name="status"
                         onChange={(event) =>
-                          updatePerSiswa(event, e.id, "status")
+                          updatePerSiswa(event, e?.id, "status")
                         }
-                        label={e.status ? e.status : "-"}
-                        defaultValue={e.status ? e.status : "-"}
+                        label={e?.status ? e?.status : "-"}
+                        defaultValue={e?.status ? e?.status : "-"}
                       >
                         <Option value="Alpa">Alpa</Option>
                         <Option value="Hadir">Hadir</Option>
@@ -407,20 +407,20 @@ function TableWithStripedRows({
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {e.jam ? convertTime(e.jam) : "-"}
+                      {e?.jam ? convertTime(e?.jam) : "-"}
                     </Typography>
                   </td>
                   <td className="p-4">
                     {open ? (
                       <Input
-                        defaultValue={e.keterangan ? e.keterangan : "-"}
+                        defaultValue={e?.keterangan ? e?.keterangan : "-"}
                         maxLength={40}
                         disabled={loading}
                         name="keterangan"
                         label="Keterangan"
                         type="text"
                         onChange={(event) =>
-                          handlerSetUpdate(event, e.id, "keterangan")
+                          handlerSetUpdate(event, e?.id, "keterangan")
                         }
                       />
                     ) : !openPerSiswa ? (
@@ -429,37 +429,37 @@ function TableWithStripedRows({
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {e.keterangan ? e.keterangan : "-"}
+                        {e?.keterangan ? e?.keterangan : "-"}
                       </Typography>
                     ) : (
                       openPerSiswa &&
-                      e.id !== idSiswa &&
-                      e.keterangan && (
+                      e?.id !== idSiswa &&
+                      e?.keterangan && (
                         <Typography
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {e.keterangan}
+                          {e?.keterangan}
                         </Typography>
                       )
                     )}
-                    {openPerSiswa && e.id === idSiswa && (
+                    {openPerSiswa && e?.id === idSiswa && (
                       <Input
-                        defaultValue={e.keterangan ? e.keterangan : "-"}
+                        defaultValue={e?.keterangan ? e?.keterangan : "-"}
                         maxLength={40}
                         disabled={loading}
                         name="keterangan"
                         label="Keterangan"
                         type="text"
                         onChange={(event) =>
-                          updatePerSiswa(event, e.id, "keterangan")
+                          updatePerSiswa(event, e?.id, "keterangan")
                         }
                       />
                     )}
                   </td>
                   {!open &&
-                    (openPerSiswa && e.id === idSiswa ? (
+                    (openPerSiswa && e?.id === idSiswa ? (
                       <td className="p-4">
                         {loading ? (
                           <DefaultSpinner />
@@ -471,7 +471,7 @@ function TableWithStripedRows({
                               className=" cursor-pointer text-green-400 hover:text-green-100 font-bold rounded-md border-none hover:bg-green-500 transition-all duration-50 w-fit"
                               onClick={() =>
                                 handlerPutPerSiswa(
-                                  e.id_siswa.id,
+                                  e?.id_siswa.id,
                                   id_mapel,
                                   id_guru,
                                   id_kelas,
@@ -520,7 +520,7 @@ function TableWithStripedRows({
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
-                          onClick={() => openEdit(e.id)}
+                          onClick={() => openEdit(e?.id)}
                         >
                           <Edit />
                         </Typography>

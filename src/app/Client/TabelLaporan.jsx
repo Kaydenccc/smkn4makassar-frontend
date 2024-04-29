@@ -152,7 +152,7 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.length > 0 ? (
+            {TABLE_ROWS?.length > 0 ? (
               TABLE_ROWS?.map(
                 (
                   { id, id_mapel, id_kelas, id_guru, materi, tanggal },
@@ -190,7 +190,7 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {id_mapel.mapel}
+                          {id_mapel?.mapel}
                         </Typography>
                       </td>
                       <td
@@ -206,7 +206,7 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {id_kelas.kelas}
+                          {id_kelas?.kelas}
                         </Typography>
                       </td>
 

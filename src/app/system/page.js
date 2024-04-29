@@ -17,7 +17,10 @@ const Dashboard = async () => {
   const data = await fetchData();
   return (
     <div className="bg-white flex-1 text-black flex flex-col justify-center items-center">
-      <SimpleRegistrationForm kelas={data.data.kelas} mapel={data.data.mapel} />
+      <SimpleRegistrationForm
+        kelas={data?.data?.kelas}
+        mapel={data?.data?.mapel}
+      />
     </div>
   );
 };
