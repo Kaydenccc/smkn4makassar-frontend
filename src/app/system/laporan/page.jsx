@@ -16,14 +16,13 @@ const getAbsens = async () => {
         },
       }
     );
-    return response.json();
+    return await response.json();
   } catch (err) {
     console.log(err);
   }
 };
 const PageLaporan = async () => {
   const data = await getAbsens();
-  console.log(data);
   return (
     <div className="w-full flex-1">
       <TabelLaporan

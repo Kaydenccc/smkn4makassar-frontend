@@ -67,7 +67,6 @@ export default function UpdateGuru({ data, id_guru }) {
       });
     }
   }
-  console.log(guru);
   return (
     <div className="w-full flex justify-center p-4">
       <Card className="w-full max-w-[54rem]">

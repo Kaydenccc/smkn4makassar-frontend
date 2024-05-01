@@ -60,22 +60,11 @@ export default function PagePengaturan() {
           },
         })
       ).json();
-      console.log(res);
       setData(res);
     }
 
     getGuru();
   }, []);
-
-  // UNTUK HAPUS DATA
-  // showConfirmation(
-  //   'Konfirmasi Hapus',
-  //   'Apakah Anda yakin ingin menghapus data?',
-  //   () => {
-  //     console.log('Data dihapus');
-  //     // Logika hapus data di sini
-  //   }
-  // );
   return (
     <div className="w-full flex justify-center items-center">
       <Card shadow={false} className="p-0 md:p-4">

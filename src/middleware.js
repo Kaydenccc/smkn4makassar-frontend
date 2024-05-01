@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 export async function middleware(request, response) {
   const token = request.cookies.get("token")?.value;
   const role = request.cookies.get("role")?.value;
-  console.log(role, token);
   if (!token || !role) {
     return NextResponse.redirect(new URL("/", request.url));
   }

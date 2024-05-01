@@ -34,8 +34,7 @@ const ListGuru = ({ data }) => {
       });
 
       hideConfirmation();
-      console.log(res);
-      setTABLE_ROWS(res.data.data);
+      setTABLE_ROWS(res?.data.data);
       setIsSuccess(true);
     } catch (err) {
       hideConfirmation();
@@ -122,15 +121,7 @@ const ListGuru = ({ data }) => {
                   : "p-4 border-b border-blue-gray-50";
 
                 return (
-                  <tr
-                    // onClick={() =>
-                    //   route(
-                    //     `/system/absens/${id_mapel?.id}/${idGuru}/${id_kelas?.id}/${tanggal}`
-                    //   )
-                    // }
-                    key={index}
-                    className="cursor-pointer hover:bg-blue-gray-50 even:bg-blue-gray-50/50"
-                  >
+                  <tr key={index} className=" even:bg-blue-gray-50/50">
                     <td className={classes}>
                       <Typography
                         variant="small"

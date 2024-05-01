@@ -42,6 +42,7 @@ const StudentCard = ({ student }) => {
 
     return formattedNumber;
   }
+
   return (
     <div className="w-full">
       <div
@@ -71,7 +72,9 @@ const StudentCard = ({ student }) => {
           <div className="flex ">
             <div className="relative">
               <QRCode
-                value={"http://localhost:3000/siswa/pengaturan"}
+                value={
+                  process.env.NEXT_PUBLIC_API_SEVER + "/absens/" + student?.id
+                }
                 size={128}
               />
             </div>

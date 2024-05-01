@@ -14,7 +14,6 @@ const getClass = async () => {
         },
       }
     );
-    console.log(process.env.NEXT_PUBLIC_API_SEVER);
     return await res.json();
   } catch (err) {
     console.log(err);
@@ -23,7 +22,6 @@ const getClass = async () => {
 
 async function PagePengaturanSiswa() {
   const { data } = await getClass();
-  console.log(data);
   return (
     <>
       <Pengaturan kelas={data?.kelas} datasiswa={data?.siswa} />

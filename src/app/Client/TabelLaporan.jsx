@@ -23,6 +23,7 @@ const TABLE_HEAD = ["Mata Pelajaran", "Kelas", "Tanggal", "Action"];
 export function TabelLaporan({ data, guru, link, current_page, last_page }) {
   const [TABLE_ROWS, setTABLE_ROWS] = useState(data);
   const { showConfirmation, hideConfirmation } = useConfirmation();
+  const [text, setText] = useState("");
 
   const navigasi = useRouter();
   const idGuru = getCookie("unique");
@@ -94,7 +95,25 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
     }
   };
 
-  console.log(TABLE_ROWS);
+  const cari = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.get("/search/absen/rekap?cari=" + text, {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      });
+      setTABLE_ROWS(res?.data?.data);
+      setLINKS(res?.data?.links);
+      setPAGE({
+        ...PAGE,
+        current_page: res?.data?.meta.current_page,
+        last_page: res?.data?.meta.last_page,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Card className="h-screen w-full flex">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -116,12 +135,17 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col-reverse gap-2 sm:flex-row w-full md:w-auto">
-            <div className="w-full md:w-72">
+            <form onSubmit={cari} className="w-full md:w-72">
               <Input
                 label="Cari"
-                icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                onChange={(e) => setText(e.target.value)}
+                icon={
+                  <button type="submit">
+                    <MagnifyingGlassIcon className="h-5 w-5 cursor-pointer hover:text-blue-500 hover:scale-150" />
+                  </button>
+                }
               />
-            </div>
+            </form>
           </div>
         </div>
       </CardHeader>

@@ -27,12 +27,11 @@ export default function Pengaturan({ kelas, datasiswa }) {
   const [data, setData] = useState({ ...datasiswa, password: "" });
 
   const handlerChange = (e) => {
-    console.log(e);
     if (e?.target) {
       e.preventDefault();
       setData({
         ...data,
-        [e.target?.name]: e.target?.value,
+        [e?.target?.name]: e?.target?.value,
       });
     } else {
       if (e === "L" || e === "P") {
@@ -67,8 +66,6 @@ export default function Pengaturan({ kelas, datasiswa }) {
     }
   }
 
-  console.log(data);
-  console.log(kelas);
   return (
     <div className="w-full flex justify-center items-center overflow-hidden">
       <Card

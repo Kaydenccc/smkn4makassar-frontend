@@ -21,7 +21,6 @@ async function getSiswa() {
 
 const PageListStudents = async () => {
   const data = await getSiswa();
-  console.log(data);
   return (
     <div>
       <ListSiswa

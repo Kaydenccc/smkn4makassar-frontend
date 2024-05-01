@@ -17,7 +17,6 @@ async function getGuru() {
 const PageListGuru = async () => {
   try {
     const { data } = await getGuru();
-    console.log(data);
     return (
       <div>
         <ListGuru data={data} />

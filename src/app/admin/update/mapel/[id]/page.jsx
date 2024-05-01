@@ -18,7 +18,6 @@ const getMapel = async (id) => {
 };
 async function page({ params: { id } }) {
   const { data } = await getMapel(id);
-  console.log(data);
   return (
     <>
       <UpdateMapel data={data} id_mapel={id} />

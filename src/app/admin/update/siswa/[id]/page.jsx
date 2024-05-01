@@ -20,10 +20,7 @@ const getClass = async (id) => {
 };
 
 async function page({ params: { id } }) {
-  console.log(id);
-
   const { data } = await getClass(id);
-  // console.log(data);
   return (
     <>
       <UpdateSiswa kelas={data?.kelas} datasiswa={data?.siswa} />

@@ -14,7 +14,6 @@ const getDataRekap = async (idmapel, idsiswa, idkelas) => {
         },
       }
     );
-    console.log("response data =", res);
     return await res.json();
   } catch (err) {
     console.log(err);
@@ -22,10 +21,8 @@ const getDataRekap = async (idmapel, idsiswa, idkelas) => {
 };
 
 export default async function Page({ params: { rekap } }) {
-  console.log(rekap);
   const [idmapel, idsiswa, idkelas] = rekap;
   const { statistik } = await getDataRekap(idmapel, idsiswa, idkelas);
-  console.log(statistik);
   return (
     <div className="py-8 px-0 md:p-8">
       <Example statistik={statistik ? statistik : []} />

@@ -42,7 +42,6 @@ export function LoginAsGuru() {
     }
   }
 
-  console.log(dataLogin);
   return (
     <React.Fragment>
       <form className="mt-8 flex flex-col gap-4">

@@ -28,12 +28,10 @@ export function LoginAsAdmin() {
   async function login() {
     setLoading(true);
     setError(null);
-    console.log(process.env.NEXT_PUBLIC_API_SEVER);
     try {
       const data = await Axios.post("/admin/login", dataLogin);
       setCookie("role", "111", 1 / 4);
       setCookie("token", data?.data?.data.token, 1 / 4);
-      console.log(data);
       navigate.push("/admin/daftar/guru");
     } catch (err) {
       if (err) {

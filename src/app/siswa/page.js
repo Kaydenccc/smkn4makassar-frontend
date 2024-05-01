@@ -14,7 +14,6 @@ const getAbsens = async () => {
         },
       }
     );
-    console.log(process.env.NEXT_PUBLIC_API_SEVER);
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -22,7 +21,6 @@ const getAbsens = async () => {
 };
 const PageSiswa = async () => {
   const data = await getAbsens();
-  console.log(data);
   return (
     <div className="w-full flex-1">
       <TabelAbsenSiswa

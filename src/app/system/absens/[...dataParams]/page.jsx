@@ -16,19 +16,15 @@ const getAbsenById = async (params) => {
         },
       }
     );
-    console.log(res);
-    return res.json();
+    return await res.json();
   } catch (err) {
     console.log(err);
   }
 };
 
 const AbasenPageDetail = async ({ params: { dataParams } }) => {
-  console.log(dataParams);
   const [id_mapel, id_guru, id_kelas, tanggal] = dataParams;
   const { data } = await getAbsenById(dataParams);
-  console.log(id_mapel);
-  console.log(data);
   return (
     <div className="w-full flex-1 flex  md:pb-0">
       <Suspense fallback={<h1>Loading...</h1>}>

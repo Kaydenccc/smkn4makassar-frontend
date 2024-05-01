@@ -18,7 +18,6 @@ const getGuru = async (id) => {
 
 async function page({ params: { id } }) {
   const { data } = await getGuru(id);
-  console.log("Guru =", data);
   return (
     <>
       <UpdateGuru data={data} id_guru={id} />

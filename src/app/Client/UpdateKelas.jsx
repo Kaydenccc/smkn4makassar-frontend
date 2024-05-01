@@ -56,7 +56,6 @@ export default function UpdateKelas({ data, id_kelas }) {
       });
     }
   }
-  console.log(kelas);
   return (
     <div className="w-full flex justify-center p-4">
       <Card className="w-full max-w-[54rem]">

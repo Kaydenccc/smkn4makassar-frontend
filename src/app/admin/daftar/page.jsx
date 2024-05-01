@@ -16,7 +16,6 @@ async function getAdmins() {
 const PageListAdmin = async () => {
   try {
     const { data } = await getAdmins();
-    console.log(data);
     return <div>{<ListAdmin TABLE_ROWS={data} />}</div>;
   } catch (err) {
     console.log(err);

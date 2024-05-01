@@ -32,7 +32,6 @@ export function LoginSiswa() {
       setCookie("token", data?.data?.data.token, 1 / 4);
       setCookie("unique", data?.data?.data.id, 1 / 4);
       setCookie("role", "1299", 1 / 4);
-      console.log(data);
       navigate.push("/siswa");
     } catch (err) {
       if (err) {
@@ -45,7 +44,6 @@ export function LoginSiswa() {
     }
   }
 
-  console.log(dataLogin);
   return (
     <React.Fragment>
       <form className="mt-8 flex flex-col gap-4">

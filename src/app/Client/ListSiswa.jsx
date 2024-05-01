@@ -37,6 +37,8 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
   const [TABLE_ROWS, setTABLE_ROWS] = useState(data);
   const navigate = useRouter();
   const [LINKS, setLINKS] = useState(link);
+  const [text, setText] = useState("");
+
   const [PAGE, setPAGE] = useState({
     current_page,
     last_page,
@@ -45,7 +47,6 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
 
   async function handlerDataAbsen(api) {
     const token = getCookie("token");
-    console.log(token);
     try {
       const res = await Axios.get(api, {
         headers: {
@@ -78,7 +79,6 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
       });
 
       hideConfirmation();
-      console.log(res);
       setTABLE_ROWS(res.data.data);
       setLINKS(res.data.links);
       setPAGE({
@@ -90,6 +90,26 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
     } catch (err) {
       hideConfirmation();
       setIsSuccess(false);
+      console.log(err);
+    }
+  };
+
+  const cari = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.get(`/search/siswa/admin?cari=${text}`, {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      });
+      setTABLE_ROWS(res.data.data);
+      setLINKS(res.data.links);
+      setPAGE({
+        ...PAGE,
+        current_page: res.data.meta.current_page,
+        last_page: res.data.meta.last_page,
+      });
+    } catch (err) {
       console.log(err);
     }
   };
@@ -121,12 +141,17 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Tambah Siswa
             </Button>
             <div className="flex min-h-fit flex-col items-center justify-between gap-4  md:flex-row">
-              <div className="w-full md:w-72">
+              <form onSubmit={cari} className="w-full md:w-72">
                 <Input
-                  label="Search"
-                  icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                  label="Cari data absen"
+                  onChange={(e) => setText(e.target.value)}
+                  icon={
+                    <button type="submit">
+                      <MagnifyingGlassIcon className="h-5 w-5 cursor-pointer hover:text-blue-500 hover:scale-150" />
+                    </button>
+                  }
                 />
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -184,15 +209,7 @@ const ListSiswa = ({ data, link, current_page, last_page }) => {
                     : "p-4 border-b border-blue-gray-50";
 
                   return (
-                    <tr
-                      // onClick={() =>
-                      //   route(
-                      //     `/system/absens/${id_mapel?.id}/${idGuru}/${id_kelas?.id}/${tanggal}`
-                      //   )
-                      // }
-                      key={index}
-                      className="cursor-pointer even:bg-blue-gray-50/50"
-                    >
+                    <tr key={index} className=" even:bg-blue-gray-50/50">
                       <td className={classes}>
                         <Typography
                           variant="small"

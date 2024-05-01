@@ -59,7 +59,6 @@ export default function UpdateMapel({ data, id_mapel }) {
       console.log(err);
     }
   }
-  console.log(mapel);
   return (
     <div className="w-full flex justify-center p-4">
       <Card className="w-full max-w-[54rem]">

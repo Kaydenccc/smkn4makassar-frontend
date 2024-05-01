@@ -34,8 +34,7 @@ const ListMapel = ({ data }) => {
       });
 
       hideConfirmation();
-      console.log(res);
-      setTABLE_ROWS(res.data.data);
+      setTABLE_ROWS(res?.data.data);
       setIsSuccess(true);
     } catch (err) {
       hideConfirmation();
@@ -123,11 +122,6 @@ const ListMapel = ({ data }) => {
 
                 return (
                   <tr
-                    // onClick={() =>
-                    //   route(
-                    //     `/system/absens/${id_mapel?.id}/${idGuru}/${id_kelas?.id}/${tanggal}`
-                    //   )
-                    // }
                     key={index}
                     className="cursor-pointer even:bg-blue-gray-50/50"
                   >

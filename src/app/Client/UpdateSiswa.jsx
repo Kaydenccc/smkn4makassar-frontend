@@ -74,7 +74,6 @@ export default function UpdateSiswa({ kelas, datasiswa }) {
       });
     }
   }
-  console.log(siswa);
   return (
     <div className="w-full flex justify-center p-4">
       <Card className="w-full max-w-[54rem]">

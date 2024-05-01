@@ -34,7 +34,6 @@ const ListAdmin = ({ data }) => {
       });
 
       hideConfirmation();
-      console.log(res);
       setTABLE_ROWS(res.data.data);
       setIsSuccess(true);
     } catch (err) {

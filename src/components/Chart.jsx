@@ -14,7 +14,6 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function Example({ statistik }) {
   const { hadir, sakit, izin, alpa } = statistik;
-  console.log(hadir, sakit, izin, alpa);
   const chartConfig = {
     type: "pie",
     width: 380,

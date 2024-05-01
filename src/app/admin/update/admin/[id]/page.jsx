@@ -21,7 +21,6 @@ const getAdmin = async (id) => {
 
 async function page({ params: { id } }) {
   const { data } = await getAdmin(id);
-  console.log("admin =", data);
   return (
     <>
       <UpdateAdmin data={data} id_admin={id} />

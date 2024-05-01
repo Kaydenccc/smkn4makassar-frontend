@@ -1,4 +1,8 @@
 "use client";
+import { AlertFailed } from "@/components/AlertFailed";
+import { AlertSuccess } from "@/components/AlertSuccess";
+import Edit from "@/components/Edit";
+import { useConfirmation } from "@/context/context.createabsen";
 import { Axios } from "@/helper/axios";
 import { getCookie } from "@/helper/cookie";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
@@ -11,86 +15,71 @@ import {
   Button,
   CardBody,
   CardFooter,
-  Chip,
+  IconButton,
+  Tooltip,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 const TABLE_HEAD = [
-  "Guru",
-  "Mata Pelajaran",
+  "ID",
+  "Nama Siswa",
+  "NISN",
   "Kelas",
-  "Materi",
-  "Status",
-  "Keterangan",
-  "Tanggal",
+  "Jenis Kelamin",
+  "Kontak",
+  "Kontak Orang Tua",
+  "Alamat",
+  "",
 ];
+const TabelSiswaPerKelas = ({ data, kelas, id_kelas }) => {
+  const { showConfirmation, hideConfirmation } = useConfirmation();
 
-export function TabelAbsenSiswa({
-  data,
-  siswa,
-  link,
-  current_page,
-  last_page,
-}) {
-  console.log(data);
   const [TABLE_ROWS, setTABLE_ROWS] = useState(data);
-  const navigasi = useRouter();
-  const idGuru = getCookie("unique");
-  const [LINKS, setLINKS] = useState(link);
-  const [PAGE, setPAGE] = useState({
-    current_page,
-    last_page,
-  });
+  const navigate = useRouter();
   const [text, setText] = useState("");
-
-  async function handlerDataAbsen(api) {
-    const token = getCookie("token");
-    try {
-      const res = await Axios.get(api, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      setTABLE_ROWS(res.data.data);
-      setLINKS(res.data.links);
-      setPAGE({
-        ...PAGE,
-        current_page: res.data.meta.current_page,
-        last_page: res.data.meta.last_page,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const [isSuccess, setIsSuccess] = useState(null);
 
   const route = (rute) => {
-    navigasi.push(rute);
+    navigate.push(rute);
   };
 
-  console.log(TABLE_ROWS);
-  const cari = async (e) => {
-    e.preventDefault();
+  const deleteSiswa = async (idsiswa) => {
+    setIsSuccess(null);
     try {
-      const res = await Axios.get(`/search/absens/siswa?cari=${text}`, {
+      const res = await Axios.delete("/siswa/" + idsiswa, {
         headers: {
           Authorization: getCookie("token"),
         },
       });
+
+      hideConfirmation();
+      setIsSuccess(true);
+    } catch (err) {
+      hideConfirmation();
+      setIsSuccess(false);
+      console.log(err);
+    }
+  };
+
+  const cari = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.get(
+        `/search/siswa/perkelas?cari=${text}&kelas=${id_kelas}`,
+        {
+          headers: {
+            Authorization: getCookie("token"),
+          },
+        }
+      );
       setTABLE_ROWS(res.data.data);
-      setLINKS(res.data.links);
-      setPAGE({
-        ...PAGE,
-        current_page: res.data.meta.current_page,
-        last_page: res.data.meta.last_page,
-      });
     } catch (err) {
       console.log(err);
     }
   };
   return (
     <Card className="h-screen w-full flex">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+      <CardHeader floated={false} shadow={false} className="rounded-none ">
         <div className="mb-6 flex md:items-center flex-col md:flex-row justify-between gap-8">
           <div>
             <Typography
@@ -98,26 +87,27 @@ export function TabelAbsenSiswa({
               color="blue-gray"
               className="text-2xl md:text-4xl"
             >
-              Status Absen
+              Daftar Siswa
             </Typography>
             <Typography
               color="gray"
-              className="mt-1 font-normal text-sm md:text-base"
+              className="mt-1 font-normal text-sm md:text-base "
             >
-              Jurusan Teknik Komputer dan Jaringan
-            </Typography>
-            <Typography
-              color="gray"
-              className="mt-1 font-normal capitalize text-sm md:text-base"
-            >
-              {siswa?.nama ? siswa?.nama : "-"}
+              Daftar Siswa Kelas {kelas}
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+            <Button
+              className="flex items-center gap-3 w-fit md:w-auto"
+              size="sm"
+              onClick={() => route(`/admin/upload/siswa`)}
+            >
+              <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Tambah Siswa
+            </Button>
             <div className="flex min-h-fit flex-col items-center justify-between gap-4  md:flex-row">
               <form onSubmit={cari} className="w-full md:w-72">
                 <Input
-                  label="Search"
+                  label="Cari data absen"
                   onChange={(e) => setText(e.target.value)}
                   icon={
                     <button type="submit">
@@ -129,12 +119,17 @@ export function TabelAbsenSiswa({
             </div>
           </div>
         </div>
+        {isSuccess ? (
+          <AlertSuccess message={"Data berhasil dihapus."} />
+        ) : isSuccess === false ? (
+          <AlertFailed message={"Data gagal dihapus."} />
+        ) : null}
       </CardHeader>
       <CardBody className="overflow-auto  flex-1 h-fit pt-0 px-0">
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>
-              {TABLE_HEAD.map((head, index) => (
+              {TABLE_HEAD?.map((head, index) => (
                 <th
                   key={head}
                   className={`border-y border-blue-gray-100 bg-[#F5F7F8] p-4 ${
@@ -157,18 +152,18 @@ export function TabelAbsenSiswa({
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS?.length > 0 ? (
+            {TABLE_ROWS?.length > 0 &&
               TABLE_ROWS?.map(
                 (
                   {
                     id,
-                    id_guru,
-                    id_mapel,
+                    nama,
                     id_kelas,
-                    materi,
-                    status,
-                    keterangan,
-                    tanggal,
+                    nis,
+                    jenis_kelamin,
+                    kontak,
+                    kontak_orang_tua,
+                    alamat,
                   },
                   index
                 ) => {
@@ -178,14 +173,14 @@ export function TabelAbsenSiswa({
                     : "p-4 border-b border-blue-gray-50";
 
                   return (
-                    <tr key={index} className=" odd:bg-white even:bg-gray-100">
+                    <tr key={index} className=" even:bg-blue-gray-50/50">
                       <td className={classes}>
                         <Typography
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {id_guru.nama}
+                          {id}
                         </Typography>
                       </td>
                       <td
@@ -205,7 +200,16 @@ export function TabelAbsenSiswa({
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {id_mapel.mapel}
+                          {nama}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {nis}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -223,33 +227,7 @@ export function TabelAbsenSiswa({
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {materi}
-                        </Typography>
-                      </td>
-                      <td className={classes}>
-                        <Chip
-                          variant="small"
-                          color={`${
-                            status === "Hadir"
-                              ? "green"
-                              : status === "Alpa"
-                              ? "red"
-                              : !status
-                              ? "blue"
-                              : status === "Sakit" ||
-                                (status === "Izin" && "orange")
-                          }`}
-                          className="w-fit"
-                          value={!status ? "Belum absen" : status}
-                        ></Chip>
-                      </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {!keterangan ? "-" : keterangan}
+                          {jenis_kelamin}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -258,44 +236,60 @@ export function TabelAbsenSiswa({
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {tanggal}
+                          {kontak}
                         </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {kontak_orang_tua}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {alamat}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Tooltip content="Edit">
+                          <IconButton
+                            variant="text"
+                            onClick={() => route("/admin/update/siswa/" + id)}
+                          >
+                            <Edit className="h-4 w-4" />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip content="Hapus siswa">
+                          <IconButton
+                            variant="text"
+                            onClick={() =>
+                              showConfirmation(
+                                "Konfirmasi Hapus",
+                                "Apakah Anda yakin ingin menghapus data?",
+                                () => deleteSiswa(id)
+                              )
+                            }
+                          >
+                            <TrashIcon className="h-4 w-4" />
+                          </IconButton>
+                        </Tooltip>
                       </td>
                     </tr>
                   );
                 }
-              )
-            ) : (
-              <tr>
-                <td>
-                  <Typography>Data tidak ada.</Typography>
-                </td>
-              </tr>
-            )}
+              )}
           </tbody>
         </table>
       </CardBody>
-      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <Typography variant="small" color="blue-gray" className="font-normal">
-          Page {PAGE?.current_page} of {PAGE?.last_page}
-        </Typography>
-        <div className="flex gap-2">
-          <Button
-            onClick={() => handlerDataAbsen(LINKS?.prev)}
-            variant="outlined"
-            size="sm"
-          >
-            Previous
-          </Button>
-          <Button
-            onClick={() => handlerDataAbsen(LINKS?.next)}
-            variant="outlined"
-            size="sm"
-          >
-            Next
-          </Button>
-        </div>
-      </CardFooter>
     </Card>
   );
-}
+};
+
+export default TabelSiswaPerKelas;

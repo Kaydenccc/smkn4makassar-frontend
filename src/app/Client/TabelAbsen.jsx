@@ -15,6 +15,7 @@ import {
   CardFooter,
   IconButton,
   Tooltip,
+  button,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -31,31 +32,11 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
   const [loading, setLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
   const [idAbsen, setIdAbsen] = useState(null);
+  const [text, setText] = useState("");
   const [PAGE, setPAGE] = useState({
     current_page,
     last_page,
   });
-
-  // async function handlerDataAbsen(api) {
-  //   const token = getCookie("token");
-  //   console.log(token);
-  //   try {
-  //     const res = await Axios.get(api, {
-  //       headers: {
-  //         Authorization: token,
-  //       },
-  //     });
-  //     setTABLE_ROWS(res.data.data);
-  //     setLINKS(res.data.links);
-  //     setPAGE({
-  //       ...PAGE,
-  //       current_page: res.data.meta.current_page,
-  //       last_page: res.data.meta.last_page,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   const route = (rute) => {
     navigasi.push(rute);
@@ -66,8 +47,7 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
     setIdAbsen(null);
 
     const token = getCookie("token");
-    console.log(token);
-    console.log(id);
+
     try {
       const res = await Axios.delete(
         "/absens/" +
@@ -87,7 +67,6 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
         }
       );
 
-      console.log(res);
       setTABLE_ROWS(res?.data?.data);
       setLINKS(res?.data?.links);
       setPAGE({
@@ -107,8 +86,26 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
       console.log(err);
     }
   };
-  console.log("TABEL ROW=", TABLE_ROWS);
 
+  const cari = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.get("/search/absen?cari=" + text, {
+        headers: {
+          Authorization: getCookie("token"),
+        },
+      });
+      setTABLE_ROWS(res?.data?.data);
+      setLINKS(res?.data?.links);
+      setPAGE({
+        ...PAGE,
+        current_page: res?.data?.meta.current_page,
+        last_page: res?.data?.meta.last_page,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Card className="h-screen w-full flex">
       <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -129,12 +126,17 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col-reverse gap-2 sm:flex-row w-full md:w-auto">
-            <div className="w-full md:w-72">
+            <form onSubmit={cari} className="w-full md:w-72">
               <Input
                 label="Cari"
-                icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                onChange={(e) => setText(e.target.value)}
+                icon={
+                  <button type="submit">
+                    <MagnifyingGlassIcon className="h-5 w-5 cursor-pointer hover:text-blue-500 hover:scale-150" />
+                  </button>
+                }
               />
-            </div>
+            </form>
             <Button
               className="flex items-center w-fit md:w-auto  gap-3"
               size="sm"

@@ -22,7 +22,6 @@ const getAbsens = async () => {
 };
 const page = async () => {
   const data = await getAbsens();
-  console.log("DATAAAAA = ", data);
   return (
     <div className="w-full flex-1">
       <TabelMataPelajaranSiswa

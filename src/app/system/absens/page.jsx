@@ -22,7 +22,6 @@ const getAbsens = async () => {
 };
 const PageAbsens = async () => {
   const data = await getAbsens();
-  console.log(data);
   return (
     <div className="w-full flex-1">
       <TabelAbsen

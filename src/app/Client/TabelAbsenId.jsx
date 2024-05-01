@@ -41,7 +41,6 @@ function TableWithStripedRows({
 }) {
   const router = useRouter();
   const [data, setdata] = useState(TABLE_ROWS);
-  console.log(id_mapel, id_guru, id_kelas);
   const [loading, setLoding] = useState(false);
   const [open, setOpen] = useState(false);
   const [openPerSiswa, setOpenPersiswa] = useState(false);
@@ -49,6 +48,7 @@ function TableWithStripedRows({
 
   const [idSiswa, setIdSiswa] = useState(null);
   const [updateSiswa, setUpdateSiswa] = useState(null);
+  const [text, setText] = useState("");
 
   const handlerSetUpdate = (event, id, identity) => {
     if (identity === "keterangan") event.preventDefault();
@@ -165,6 +165,22 @@ function TableWithStripedRows({
     setOpenPersiswa(true);
   }
 
+  const cari = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await Axios.get(
+        `/search/siswa?mapel=${id_mapel}&guru=${id_guru}&kelas=${id_kelas}&tgl=${tanggal}&cari=${text}`,
+        {
+          headers: {
+            Authorization: getCookie("token"),
+          },
+        }
+      );
+      setdata(res?.data?.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Card className="flex-1  flex  mb-4 w-full overflow-hidden ">
       <CardHeader
@@ -246,12 +262,17 @@ function TableWithStripedRows({
               </Button>
             </div>
             <div className="flex mt-6 min-h-fit w-full flex-col items-center justify-end md:flex-row">
-              <div className="w-full md:w-72">
+              <form onSubmit={cari} className="w-full md:w-72">
                 <Input
                   label="Cari data absen"
-                  icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                  onChange={(e) => setText(e.target.value)}
+                  icon={
+                    <button type="submit">
+                      <MagnifyingGlassIcon className="h-5 w-5 cursor-pointer hover:text-blue-500 hover:scale-150" />
+                    </button>
+                  }
                 />
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -293,13 +314,15 @@ function TableWithStripedRows({
                 <tr
                   key={index}
                   className="even:bg-blue-gray-50/50 cursor-pointer"
-                  onClick={() =>
-                    router.push(
-                      `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
-                    )
-                  }
                 >
-                  <td className="p-4">
+                  <td
+                    className="p-4"
+                    onClick={() =>
+                      router.push(
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                      )
+                    }
+                  >
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -308,7 +331,14 @@ function TableWithStripedRows({
                       {index + 1}
                     </Typography>
                   </td>
-                  <td className="p-4">
+                  <td
+                    className="p-4"
+                    onClick={() =>
+                      router.push(
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                      )
+                    }
+                  >
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -328,6 +358,11 @@ function TableWithStripedRows({
                       position: "sticky",
                       left: 0,
                     }}
+                    onClick={() =>
+                      router.push(
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                      )
+                    }
                   >
                     <Typography
                       variant="small"
@@ -337,7 +372,14 @@ function TableWithStripedRows({
                       {e?.id_siswa?.nama}
                     </Typography>
                   </td>
-                  <td className="p-4">
+                  <td
+                    className="p-4"
+                    onClick={() =>
+                      router.push(
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                      )
+                    }
+                  >
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -368,6 +410,11 @@ function TableWithStripedRows({
                         variant="small"
                         color="blue-gray"
                         className="font-normal"
+                        onClick={() =>
+                          router.push(
+                            `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                          )
+                        }
                       >
                         {e?.status ? e?.status : "-"}
                       </Typography>
@@ -379,6 +426,11 @@ function TableWithStripedRows({
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
+                          onClick={() =>
+                            router.push(
+                              `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                            )
+                          }
                         >
                           {e?.status}
                         </Typography>
@@ -401,7 +453,14 @@ function TableWithStripedRows({
                       </Select>
                     )}
                   </td>
-                  <td className="p-4">
+                  <td
+                    className="p-4"
+                    onClick={() =>
+                      router.push(
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                      )
+                    }
+                  >
                     <Typography
                       variant="small"
                       color="blue-gray"
@@ -428,6 +487,11 @@ function TableWithStripedRows({
                         variant="small"
                         color="blue-gray"
                         className="font-normal"
+                        onClick={() =>
+                          router.push(
+                            `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                          )
+                        }
                       >
                         {e?.keterangan ? e?.keterangan : "-"}
                       </Typography>
@@ -439,6 +503,11 @@ function TableWithStripedRows({
                           variant="small"
                           color="blue-gray"
                           className="font-normal"
+                          onClick={() =>
+                            router.push(
+                              `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                            )
+                          }
                         >
                           {e?.keterangan}
                         </Typography>
