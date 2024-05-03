@@ -1,5 +1,6 @@
 "use client";
 import { AlertSuccess } from "@/components/AlertSuccess";
+import Edit from "@/components/Edit";
 import { useConfirmation } from "@/context/context.createabsen";
 import { Axios } from "@/helper/axios";
 import { getCookie } from "@/helper/cookie";
@@ -261,7 +262,11 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
                             {tanggal}
                           </Typography>
                         </td>
-                        <td className={classes}>
+                        <td
+                          className={
+                            classes + " flex justify-center items-center"
+                          }
+                        >
                           <Tooltip content="Hapus Absen">
                             <IconButton
                               variant="text"
@@ -280,6 +285,18 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
                               }
                             >
                               <TrashIcon className="h-4 w-4" />
+                            </IconButton>
+                          </Tooltip>
+                          <Tooltip content="Hapus Absen">
+                            <IconButton
+                              variant="text"
+                              onClick={() =>
+                                route(
+                                  `/system/absens/update/${id_mapel?.id}/${idGuru}/${id_kelas?.id}/${tanggal}/${materi}`
+                                )
+                              }
+                            >
+                              <Edit className="h-4 w-4" />
                             </IconButton>
                           </Tooltip>
                         </td>

@@ -121,10 +121,7 @@ const ListMapel = ({ data }) => {
                   : "p-4 border-b border-blue-gray-50";
 
                 return (
-                  <tr
-                    key={index}
-                    className="cursor-pointer even:bg-blue-gray-50/50"
-                  >
+                  <tr key={index} className=" even:bg-blue-gray-50/50">
                     <td className={classes}>
                       <Typography
                         variant="small"
@@ -137,7 +134,7 @@ const ListMapel = ({ data }) => {
                     <td
                       className={
                         classes +
-                        `sticky left-0 z-10 cursor-pointer ${
+                        `sticky left-0 z-10 ${
                           index % 2 === 0 ? "bg-white" : " bg-[#F5F7F8]"
                         } p-4`
                       }
