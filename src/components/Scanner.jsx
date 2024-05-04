@@ -113,7 +113,6 @@ const Scanner = ({
 
   const switchCamera = () => {
     setCameraType((prevType) => (prevType === "user" ? "environment" : "user"));
-    stopScanner(); // Stop scanner when switching cameras
     startScanner(); // Stop scanner when switching cameras
   };
 
