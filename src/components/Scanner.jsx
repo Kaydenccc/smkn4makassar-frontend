@@ -113,7 +113,8 @@ const Scanner = ({
 
   const switchCamera = () => {
     setCameraType((prevType) => (prevType === "user" ? "environment" : "user"));
-    // setIsScannerRunning(false); // Stop scanner when switching cameras
+    setIsScannerRunning(false); // Stop scanner when switching cameras
+    setIsScannerRunning(true); // Stop scanner when switching cameras
   };
 
   return (
@@ -124,7 +125,7 @@ const Scanner = ({
           Switch Camera
         </Button>
         <Button
-          className="mt-4 rounded-none"
+          className="mt-2 rounded-none"
           onClick={isScannerRunning ? stopScanner : startScanner}
         >
           {isScannerRunning ? "Stop Scanner" : "Start Scanner"}
