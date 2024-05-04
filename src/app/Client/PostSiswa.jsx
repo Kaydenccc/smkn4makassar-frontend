@@ -303,6 +303,7 @@ export default function PostSiswa({ kelas }) {
                       disabled={isLoading}
                       value={siswa?.password}
                       name="password"
+                      type="password"
                       onChange={handlerChange}
                       placeholder="Masukan kata sandi"
                       className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

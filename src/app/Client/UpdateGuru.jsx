@@ -219,6 +219,7 @@ export default function UpdateGuru({ data, id_guru }) {
                       disabled={isLoading}
                       defaultValue={guru?.password}
                       name="password"
+                      type="password"
                       onChange={handlerChange}
                       placeholder="Masukan kata sandi baru"
                       className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

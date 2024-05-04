@@ -74,6 +74,7 @@ export function LoginAsAdmin() {
           </Typography>
           <Input
             name="password"
+            type="password"
             onChange={handlerChange}
             placeholder="Masukan kata sandi"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

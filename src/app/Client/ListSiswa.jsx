@@ -23,7 +23,7 @@ import { useState } from "react";
 const TABLE_HEAD = [
   "ID",
   "Nama Siswa",
-  "NISN",
+  "NIS",
   "Kelas",
   "Jenis Kelamin",
   "Kontak",

@@ -291,6 +291,7 @@ export default function UpdateSiswa({ kelas, datasiswa }) {
                     <Input
                       disabled={isLoading}
                       name="password"
+                      type="password"
                       onChange={handlerChange}
                       placeholder="Masukan kata sandi baru"
                       className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

@@ -59,7 +59,7 @@ export function LoginSiswa() {
             onChange={handlerChange}
             type="text"
             name="nis"
-            placeholder="NISN:XXXXXXXXX"
+            placeholder="NIS:XXXXXXXXX"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -77,6 +77,7 @@ export function LoginSiswa() {
           </Typography>
           <Input
             name="password"
+            type="password"
             onChange={handlerChange}
             placeholder="Masukan kata sandi"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

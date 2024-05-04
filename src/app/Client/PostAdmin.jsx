@@ -116,7 +116,7 @@ export default function PostAdmin() {
                     value={admin?.password}
                     name="password"
                     onChange={handlerChange}
-                    type="text"
+                    type="password"
                     placeholder="Masukan kata sandi"
                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                     labelProps={{

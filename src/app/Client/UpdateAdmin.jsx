@@ -121,8 +121,8 @@ export default function UpdateAdmin({ data, id_admin }) {
                     disabled={isLoading}
                     defaultValue={admin?.password}
                     name="password"
+                    type="password"
                     onChange={handlerChange}
-                    type="text"
                     placeholder="Masukan kata sandi baru"
                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                     labelProps={{

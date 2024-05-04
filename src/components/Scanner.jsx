@@ -120,7 +120,11 @@ const Scanner = ({
     <div className="flex w-full h-full flex-col justify-center items-center">
       <div className="max-w-full h-full flex justify-center flex-col  md:max-w-lg">
         <video ref={videoRef} />
-        <Button className="mt-4 rounded-none" onClick={switchCamera}>
+        <Button
+          className="mt-4 rounded-none"
+          color="blue"
+          onClick={switchCamera}
+        >
           Switch Camera
         </Button>
         <Button
