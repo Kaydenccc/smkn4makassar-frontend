@@ -110,6 +110,12 @@ const Scanner = ({
       scannedQRRef.current = new Set();
     };
   }, []);
+
+  const switchCamera = () => {
+    setCameraType((prevType) => (prevType === "user" ? "environment" : "user"));
+    setIsScannerRunning(false); // Stop scanner when switching cameras
+  };
+
   return (
     <div className="flex w-full h-full flex-col justify-center items-center">
       <div className="max-w-full h-full flex justify-center flex-col  md:max-w-lg">
