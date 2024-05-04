@@ -221,7 +221,7 @@ export default function PostGuru() {
                       disabled={isLoading}
                       value={guru?.password}
                       name="password"
-                      type="text"
+                      type="password"
                       onChange={handlerChange}
                       placeholder="Masukan sandi"
                       className=" !border-t-blue-gray-200 focus:!border-t-gray-900"

@@ -4,6 +4,7 @@ import jsQR from "jsqr";
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import { getCookie } from "@/helper/cookie";
+import { DefaultSpinner } from "./Spinner";
 
 const Scanner = ({
   id_mapel,
@@ -16,10 +17,12 @@ const Scanner = ({
   const videoRef = useRef();
   const scannedQRRef = useRef(new Set());
   const [isScannerRunning, setIsScannerRunning] = useState(false);
+  const [loadingScan, setLoadingScan] = useState(false);
   const [cameraType, setCameraType] = useState("environment"); // "environment" untuk kamera belakang, "user" untuk kamera depan
   const constraints = { video: { facingMode: cameraType } };
   console.log(id_mapel, id_guru, id_kelas, tanggal);
   const startScanner = () => {
+    setLoadingScan(true);
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
@@ -28,6 +31,7 @@ const Scanner = ({
         return new Promise((resolve) => {
           video.onloadedmetadata = () => {
             resolve(video);
+            setLoadingScan(false);
           };
         });
       })
@@ -123,9 +127,10 @@ const Scanner = ({
         <Button
           className="mt-4 rounded-none"
           color="blue"
+          disabled={!isScannerRunning || loadingScan}
           onClick={switchCamera}
         >
-          Switch Camera
+          {loadingScan ? <DefaultSpinner /> : "Switch Camera"}
         </Button>
         <Button
           className="mt-2 rounded-none"
