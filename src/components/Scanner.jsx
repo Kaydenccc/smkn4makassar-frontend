@@ -16,7 +16,8 @@ const Scanner = ({
   const videoRef = useRef();
   const scannedQRRef = useRef(new Set());
   const [isScannerRunning, setIsScannerRunning] = useState(false);
-  const constraints = { video: true };
+  const [cameraType, setCameraType] = useState("environment"); // "environment" untuk kamera belakang, "user" untuk kamera depan
+  const constraints = { video: { facingMode: cameraType } };
   console.log(id_mapel, id_guru, id_kelas, tanggal);
   const startScanner = () => {
     navigator.mediaDevices
@@ -113,6 +114,9 @@ const Scanner = ({
     <div className="flex w-full h-full flex-col justify-center items-center">
       <div className="max-w-full h-full flex justify-center flex-col  md:max-w-lg">
         <video ref={videoRef} />
+        <Button className="mt-4 rounded-none" onClick={switchCamera}>
+          Switch Camera
+        </Button>
         <Button
           className="mt-4 rounded-none"
           onClick={isScannerRunning ? stopScanner : startScanner}
