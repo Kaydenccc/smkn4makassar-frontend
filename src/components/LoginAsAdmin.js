@@ -36,9 +36,9 @@ export function LoginAsAdmin() {
     } catch (err) {
       if (err) {
         console.log(err);
+        setLoading(false);
         setError(err.response?.data?.errors.message[0]);
       }
-      setLoading(false);
     }
   }
   return (
