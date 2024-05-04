@@ -264,7 +264,7 @@ function TableWithStripedRows({
             <div className="flex mt-6 min-h-fit w-full flex-col items-center justify-end md:flex-row">
               <form onSubmit={cari} className="w-full md:w-72">
                 <Input
-                  label="Cari data absen"
+                  label="Cari by:nama,nis"
                   onChange={(e) => setText(e.target.value)}
                   icon={
                     <button type="submit">

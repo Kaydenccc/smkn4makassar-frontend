@@ -107,7 +107,7 @@ const TabelSiswaPerKelas = ({ data, kelas, id_kelas }) => {
             <div className="flex min-h-fit flex-col items-center justify-between gap-4  md:flex-row">
               <form onSubmit={cari} className="w-full md:w-72">
                 <Input
-                  label="Cari data absen"
+                  label="Cari by:nama,nis,kelas,kontak"
                   onChange={(e) => setText(e.target.value)}
                   icon={
                     <button type="submit">
