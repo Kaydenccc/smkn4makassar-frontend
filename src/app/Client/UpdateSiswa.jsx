@@ -154,7 +154,7 @@ export default function UpdateSiswa({ kelas, datasiswa }) {
                           color="blue-gray"
                           className="mb-2 font-medium"
                         >
-                          NISN
+                          NIS
                         </Typography>
                         <Input
                           disabled={isLoading}
@@ -301,9 +301,11 @@ export default function UpdateSiswa({ kelas, datasiswa }) {
                     />
                   </div>
                   <div className="flex justify-center items-center gap-4">
-                    <Button disabled={isLoading} size="lg" color="blue">
-                      <a href="/admin/daftar/siswa">Kembali</a>
-                    </Button>
+                    <a href="/admin/daftar/siswa">
+                      <Button disabled={isLoading} size="lg" color="blue">
+                        Kembali
+                      </Button>
+                    </a>
                     <Button
                       disabled={isLoading}
                       onClick={() =>

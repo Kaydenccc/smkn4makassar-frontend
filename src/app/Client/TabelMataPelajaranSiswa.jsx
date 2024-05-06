@@ -12,7 +12,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const TABLE_HEAD = ["No.", "Pengampuh", "Mata Pelajaran", "Kelas"];
+const TABLE_HEAD = ["No.", "Guru", "Mata Pelajaran", "Kelas"];
 
 export function TabelMataPelajaranSiswa({ data, idsiswa }) {
   const [TABLE_ROWS, setTABLE_ROWS] = useState(data);
@@ -59,7 +59,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             <form onSubmit={cari} className="w-full md:w-72">
               <Input
-                label="Cari data absen"
+                placeholder="Cari by:mapel,guru"
                 onChange={(e) => setText(e.target.value)}
                 icon={
                   <button type="submit">

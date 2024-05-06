@@ -129,12 +129,7 @@ export default function PostAdmin() {
 
             <div className="flex justify-center items-center gap-4">
               <a href="/admin/daftar/admin">
-                <Button
-                  disabled={isLoading}
-                  // onClick={() => route.back()}
-                  size="lg"
-                  color="blue"
-                >
+                <Button disabled={isLoading} size="lg" color="blue">
                   Kembali
                 </Button>
               </a>

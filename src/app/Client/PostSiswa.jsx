@@ -165,7 +165,7 @@ export default function PostSiswa({ kelas }) {
                           color="blue-gray"
                           className="mb-2 font-medium"
                         >
-                          NISN
+                          NIS
                         </Typography>
                         <Input
                           disabled={isLoading}

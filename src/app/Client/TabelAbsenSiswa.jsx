@@ -117,7 +117,7 @@ export function TabelAbsenSiswa({
             <div className="flex min-h-fit flex-col items-center justify-between gap-4  md:flex-row">
               <form onSubmit={cari} className="w-full md:w-72">
                 <Input
-                  label="Search"
+                  placeholder="Cari by:guru,mapel,tanggal"
                   onChange={(e) => setText(e.target.value)}
                   icon={
                     <button type="submit">

@@ -26,7 +26,7 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
   const [text, setText] = useState("");
 
   const navigasi = useRouter();
-  const idGuru = getCookie("unique");
+  // const idGuru = getCookie("unique");
   const [LINKS, setLINKS] = useState(link);
   const [PAGE, setPAGE] = useState({
     current_page,
@@ -137,7 +137,7 @@ export function TabelLaporan({ data, guru, link, current_page, last_page }) {
           <div className="flex shrink-0 flex-col-reverse gap-2 sm:flex-row w-full md:w-auto">
             <form onSubmit={cari} className="w-full md:w-72">
               <Input
-                label="Cari by:mapel,kelas,tanggal"
+                label="Cari by:mapel,kelas"
                 onChange={(e) => setText(e.target.value)}
                 icon={
                   <button type="submit">

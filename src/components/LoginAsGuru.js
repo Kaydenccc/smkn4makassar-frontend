@@ -44,7 +44,7 @@ export function LoginAsGuru() {
 
   return (
     <React.Fragment>
-      <form className="mt-8 flex flex-col gap-4">
+      <form onSubmit={login} method="post" className="mt-8 flex flex-col gap-4">
         <div>
           <Typography
             variant="small"
@@ -87,7 +87,7 @@ export function LoginAsGuru() {
         {error && <AlertFailed message={error} />}
         <Button
           size="lg"
-          onClick={login}
+          type="submit"
           disabled={loading}
           className={`${loading && "cursor-not-allowed"}`}
         >
