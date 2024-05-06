@@ -25,7 +25,9 @@ export function LoginAsGuru() {
     });
   }
 
-  async function login() {
+  async function login(e) {
+    e.preventDefault();
+
     setLoading(true);
     setError(null);
     try {
@@ -44,7 +46,7 @@ export function LoginAsGuru() {
 
   return (
     <React.Fragment>
-      <form onSubmit={login} method="post" className="mt-8 flex flex-col gap-4">
+      <form onSubmit={login} className="mt-8 flex flex-col gap-4">
         <div>
           <Typography
             variant="small"
