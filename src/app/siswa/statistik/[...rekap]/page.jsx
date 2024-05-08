@@ -25,7 +25,10 @@ export default async function Page({ params: { rekap } }) {
   const { statistik } = await getDataRekap(idmapel, idsiswa, idkelas);
   return (
     <div className="py-8 px-0 md:p-8">
-      <Example statistik={statistik ? statistik : []} mapel={mapel} />
+      <Example
+        statistik={statistik ? statistik : []}
+        mapel={convertUrlParameterFormat(mapel)}
+      />
     </div>
   );
 }
