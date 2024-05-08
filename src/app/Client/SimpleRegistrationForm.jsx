@@ -35,7 +35,7 @@ export function SimpleRegistrationForm({ kelas, mapel }) {
         },
       });
       setLoading(false);
-      router.push("/system/absens");
+      router.push("/system/absens", { force: true });
     } catch (err) {
       console.log(err);
     }
