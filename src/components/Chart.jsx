@@ -35,6 +35,8 @@ export default function Example({ statistik, mapel }) {
       },
     },
   };
+
+  console.log(mapel);
   return (
     <Card className="w-full">
       <CardHeader
