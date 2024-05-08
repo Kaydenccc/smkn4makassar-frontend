@@ -319,7 +319,7 @@ function TableWithStripedRows({
                     className="p-4"
                     onClick={() =>
                       router.push(
-                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}/${mapel}`
                       )
                     }
                   >
@@ -335,7 +335,7 @@ function TableWithStripedRows({
                     className="p-4"
                     onClick={() =>
                       router.push(
-                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}/${mapel}`
                       )
                     }
                   >
@@ -360,7 +360,7 @@ function TableWithStripedRows({
                     }}
                     onClick={() =>
                       router.push(
-                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}/${mapel}`
                       )
                     }
                   >
@@ -376,7 +376,7 @@ function TableWithStripedRows({
                     className="p-4"
                     onClick={() =>
                       router.push(
-                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}/${mapel}`
                       )
                     }
                   >
@@ -457,7 +457,7 @@ function TableWithStripedRows({
                     className="p-4"
                     onClick={() =>
                       router.push(
-                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}`
+                        `/system/statistik/${id_mapel}/${e.id_siswa?.id}/${id_kelas}/${mapel}`
                       )
                     }
                   >

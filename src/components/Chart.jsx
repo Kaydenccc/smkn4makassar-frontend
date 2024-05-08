@@ -12,7 +12,7 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 // import dynamic from "next/dynamic";
 // const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function Example({ statistik }) {
+export default function Example({ statistik, mapel }) {
   const { hadir, sakit, izin, alpa } = statistik;
   const chartConfig = {
     type: "pie",
@@ -55,7 +55,7 @@ export default function Example({ statistik }) {
             color="gray"
             className="max-w-sm font-normal"
           >
-            pada mata pelajaran Informatika
+            pada mata pelajaran {mapel}
           </Typography>
         </div>
       </CardHeader>
