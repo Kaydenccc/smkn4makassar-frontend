@@ -35,13 +35,13 @@ export function SimpleRegistrationForm({ kelas, mapel }) {
         },
       });
       setLoading(false);
-      router.push("/system/absens", undefined, { shallow: true });
+      window.location.href = "/system/absens";
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
-  console.log(state);
   return (
     <Card shadow={false} className="p-0 md:p-4">
       <Typography variant="h4" color="blue-gray">
