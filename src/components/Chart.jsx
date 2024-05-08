@@ -7,12 +7,16 @@ import {
 } from "@material-tailwind/react";
 import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
 import dynamic from "next/dynamic";
+import { convertUrlParameterFormat } from "@/helper/functionConvertString";
+import { useParams } from "next/navigation";
+
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 // If you're using Next.js please use the dynamic import for react-apexcharts and remove the import from the top for the react-apexcharts
 // import dynamic from "next/dynamic";
 // const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function Example({ statistik, mapel }) {
+export default function Example({ statistik }) {
+  const params = useParams();
   const { hadir, sakit, izin, alpa } = statistik;
   const chartConfig = {
     type: "pie",
@@ -35,8 +39,6 @@ export default function Example({ statistik, mapel }) {
       },
     },
   };
-
-  console.log(mapel);
   return (
     <Card className="w-full">
       <CardHeader
@@ -57,7 +59,7 @@ export default function Example({ statistik, mapel }) {
             color="gray"
             className="max-w-sm font-normal"
           >
-            pada mata pelajaran {mapel}
+            pada mata pelajaran {convertUrlParameterFormat(params?.rekap[3])}
           </Typography>
         </div>
       </CardHeader>

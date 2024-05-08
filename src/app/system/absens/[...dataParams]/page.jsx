@@ -1,4 +1,3 @@
-import Scanner from "@/components/Scanner";
 import TableWithStripedRows from "@/app/Client/TabelAbsenId";
 import React, { Suspense } from "react";
 import { cookies } from "next/headers";
@@ -25,6 +24,7 @@ const getAbsenById = async (params) => {
 const AbasenPageDetail = async ({ params: { dataParams } }) => {
   const [id_mapel, id_guru, id_kelas, tanggal] = dataParams;
   const { data } = await getAbsenById(dataParams);
+  console.log(dataParams);
   return (
     <div className="w-full flex-1 flex  md:pb-0">
       <Suspense fallback={<h1>Loading...</h1>}>
