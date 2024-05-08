@@ -17,7 +17,7 @@ import {
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-const TABLE_HEAD = ["No.", "Nama Mata Pelajaran"];
+const TABLE_HEAD = ["ID", "Nama Mata Pelajaran"];
 const ListMapel = ({ data }) => {
   const route = useRouter();
   const { showConfirmation, hideConfirmation } = useConfirmation();
@@ -128,7 +128,7 @@ const ListMapel = ({ data }) => {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {index + 1}
+                        {id}
                       </Typography>
                     </td>
                     <td

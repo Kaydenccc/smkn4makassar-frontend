@@ -6,7 +6,7 @@ export function setCookie(cname, cvalue, exdays) {
       path: "/",
       secure: true,
       sameSite: "None",
-      domain: "absensismk4.4muda.co",
+      // domain: "absensismk4.4muda.co",
     });
   }
 }
