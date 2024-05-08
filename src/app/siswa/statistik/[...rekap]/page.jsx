@@ -24,6 +24,7 @@ const getDataRekap = async (idmapel, idsiswa, idkelas) => {
 export default async function Page({ params: { rekap } }) {
   const [idmapel, idsiswa, idkelas, mapel] = rekap;
   const { statistik } = await getDataRekap(idmapel, idsiswa, idkelas);
+  console.log(rekap);
   return (
     <div className="py-8 px-0 md:p-8">
       <Example
