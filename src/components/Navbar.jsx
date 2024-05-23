@@ -145,7 +145,7 @@ export function NavbarSimple() {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-xl px-6 py-3 mb-8">
+    <Navbar className="mx-auto max-w-screen-xl px-2 md:px-6 py-1 md:py-3 mb-4 md:mb-8">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"

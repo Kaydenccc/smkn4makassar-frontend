@@ -287,7 +287,7 @@ export function TabelAbsen({ data, guru, link, current_page, last_page }) {
                               <TrashIcon className="h-4 w-4" />
                             </IconButton>
                           </Tooltip>
-                          <Tooltip content="Hapus Absen">
+                          <Tooltip content="Edit Absen">
                             <IconButton
                               variant="text"
                               onClick={() =>
