@@ -22,11 +22,11 @@ const getDataRekap = async (idmapel, idsiswa, idkelas) => {
 };
 
 export default async function Page({ params: { rekap } }) {
-  const [idmapel, idsiswa, idkelas] = rekap;
+  const [idmapel, idsiswa, idkelas, _, nama] = rekap;
   const { statistik } = await getDataRekap(idmapel, idsiswa, idkelas);
   return (
     <div className="py-8 px-0 md:p-8 w-full">
-      <Example statistik={statistik ? statistik : []} />
+      <Example statistik={statistik ? statistik : []} nama={nama} />
     </div>
   );
 }

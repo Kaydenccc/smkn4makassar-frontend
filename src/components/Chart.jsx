@@ -15,7 +15,7 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 // import dynamic from "next/dynamic";
 // const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function Example({ statistik }) {
+export default function Example({ statistik, nama }) {
   const params = useParams();
   const { hadir, sakit, izin, alpa } = statistik;
   const chartConfig = {
@@ -51,8 +51,11 @@ export default function Example({ statistik }) {
           <Square3Stack3DIcon className="h-6 w-6" />
         </div>
         <div>
-          <Typography variant="h6" color="blue-gray">
+          <Typography variant="h6" className="uppercase" color="blue-gray">
             STATISTIK KEHADIRAN
+          </Typography>
+          <Typography variant="h6" color="blue-gray">
+            {nama}
           </Typography>
           <Typography
             variant="small"

@@ -8,11 +8,13 @@ import {
   Input,
   Typography,
   CardBody,
+  Tooltip,
+  IconButton,
 } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const TABLE_HEAD = ["No.", "Guru", "Mata Pelajaran", "Kelas"];
+const TABLE_HEAD = ["No.", "Guru", "Mata Pelajaran", "Kelas", "Action"];
 
 export function TabelMataPelajaranSiswa({ data, idsiswa }) {
   const [TABLE_ROWS, setTABLE_ROWS] = useState(data);
@@ -107,15 +109,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                     : "p-4 border-b border-blue-gray-50";
 
                   return (
-                    <tr
-                      onClick={() =>
-                        route(
-                          `/siswa/statistik/${id_mapel}/${idsiswa}/${id_kelas}`
-                        )
-                      }
-                      key={index}
-                      className="cursor-pointer hover:bg-blue-gray-50 odd:bg-white even:bg-gray-100"
-                    >
+                    <tr key={index} className=" odd:bg-white even:bg-gray-100">
                       <td className={classes}>
                         <Typography
                           variant="small"
@@ -128,7 +122,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                       <td
                         className={
                           classes +
-                          `sticky left-0 z-10 cursor-pointer ${
+                          `sticky left-0 z-10  ${
                             index % 2 === 0 ? "bg-white" : " bg-[#F5F7F8]"
                           } p-4`
                         }
@@ -162,6 +156,38 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                         >
                           {kelas?.kelas}
                         </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Tooltip
+                          content={"Statistik Kehadiran " + mapel?.mapel}
+                        >
+                          <IconButton
+                            variant="text"
+                            onClick={() =>
+                              route(
+                                `/siswa/statistik/${id_mapel}/${idsiswa}/${id_kelas}`
+                              )
+                            }
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              className="w-5 h-5 text-green-500 cursor-pointer"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 0 1-16.5 0Z"
+                                clipRule="evenodd"
+                              />
+                              <path
+                                fillRule="evenodd"
+                                d="M12.75 3a.75.75 0 0 1 .75-.75 8.25 8.25 0 0 1 8.25 8.25.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V3Z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </IconButton>
+                        </Tooltip>
                       </td>
                     </tr>
                   );
