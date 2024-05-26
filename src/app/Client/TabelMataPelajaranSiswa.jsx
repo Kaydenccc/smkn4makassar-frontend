@@ -165,7 +165,7 @@ export function TabelMataPelajaranSiswa({ data, idsiswa }) {
                             variant="text"
                             onClick={() =>
                               route(
-                                `/siswa/statistik/${id_mapel}/${idsiswa}/${id_kelas}`
+                                `/siswa/statistik/${id_mapel}/${idsiswa}/${id_kelas}/${mapel?.mapel}`
                               )
                             }
                           >
