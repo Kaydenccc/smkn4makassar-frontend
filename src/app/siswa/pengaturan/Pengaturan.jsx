@@ -112,11 +112,12 @@ export default function Pengaturan({ kelas, datasiswa }) {
                 }}
               />
               <Typography variant="h6" color="blue-gray" className="-mb-3">
-                NISN
+                NIS
               </Typography>
               <Input
                 type="text"
                 size="lg"
+                disabled={true}
                 onChange={handlerChange}
                 name="nis"
                 defaultValue={data?.nis}
