@@ -20,8 +20,9 @@ const TABLE_HEAD = [
   "Guru",
   "Mata Pelajaran",
   "Kelas",
-  "Materi",
   "Status",
+  "Jam",
+  "Materi",
   "Keterangan",
   "Tanggal",
 ];
@@ -165,6 +166,7 @@ export function TabelAbsenSiswa({
                     id_guru,
                     id_mapel,
                     id_kelas,
+                    jam,
                     materi,
                     status,
                     keterangan,
@@ -217,15 +219,7 @@ export function TabelAbsenSiswa({
                           {id_kelas.kelas}
                         </Typography>
                       </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {materi}
-                        </Typography>
-                      </td>
+
                       <td className={classes}>
                         <Chip
                           variant="small"
@@ -242,6 +236,24 @@ export function TabelAbsenSiswa({
                           className="w-fit"
                           value={!status ? "Belum absen" : status}
                         ></Chip>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {jam ? jam : "-"}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {materi}
+                        </Typography>
                       </td>
                       <td className={classes}>
                         <Typography
